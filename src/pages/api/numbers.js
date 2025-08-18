@@ -23,14 +23,14 @@ export default async function handler(req, res) {
       const entries = await prisma.numberEntry.findMany();
 
       if (!entries.length) {
-        return res.status(200).json({ count: 0, min: null, max: null, mean: null });
+        return res.status(200).json({ count: 0, min: null, max: null, sum: null; mean: null });
       }
 
       const values = entries.map((entry) => entry.value);
       const count = values.length;
       const min = Math.min(...values);
       const max = Math.max(...values);
-      const sum = Math.sum(...values);
+      const sum = Math.sumPrecise(...values);
       const mean = values.reduce((sum, val) => sum + val, 0) / count;
 
       return res.status(200).json({ count, min, max, sum, mean });
