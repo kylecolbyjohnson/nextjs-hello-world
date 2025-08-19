@@ -6,6 +6,7 @@ export default function Home() {
     count: 0,
     min: null,
     max: null,
+    sum: null,
     mean: null,
   });
 
@@ -66,6 +67,7 @@ export default function Home() {
         <li><strong>Count:</strong> {stats.count}</li>
         <li><strong>Min:</strong> {stats.min ?? 'N/A'}</li>
         <li><strong>Max:</strong> {stats.max ?? 'N/A'}</li>
+        <li><strong>Sum:</strong> {stats.sum ?? 'N/A'}</li>
         <li><strong>Mean:</strong> {stats.mean !== null ? stats.mean.toFixed(2) : 'N/A'}</li>
       </ul>
     </div>
