@@ -26,11 +26,11 @@ export default async function handler(req, res) {
         return res.status(200).json({ count: 0, min: null, max: null, total: null, mean: null });
       }
 
-      const values = entries.map((  ) => entry.value);
+      const values = entries.map(( entry ) => entry.value);
       const count = values.length;
       const min = Math.min(...values);
       const max = Math.max(...values);
-      const total = values.reduce((acc, val) => acc + val, 0);
+      const total = values.reduce((acc, currentvalue) => acc + currentvalue, 0);
       const mean = values.reduce((sum, val) => sum + val, 0) / count;
 
       return res.status(200).json({ count, min, max, total, mean });
