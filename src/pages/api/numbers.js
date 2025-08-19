@@ -23,17 +23,17 @@ export default async function handler(req, res) {
       const entries = await prisma.numberEntry.findMany();
 
       if (!entries.length) {
-        return res.status(200).json({ count: 0, min: null, max: null, sum: null, mean: null });
+        return res.status(200).json({ count: 0, min: null, max: null, total: null, mean: null });
       }
 
       const values = entries.map((  ) => entry.value);
       const count = values.length;
       const min = Math.min(...values);
       const max = Math.max(...values);
-      const sum = values.reduce((sum,val) => sum + val, 0);
+      const total = values.reduce((acc, val) => acc + val, 0);
       const mean = values.reduce((sum, val) => sum + val, 0) / count;
 
-      return res.status(200).json({ count, min, max, sum, mean });
+      return res.status(200).json({ count, min, max, total, mean });
     }
 
     // Method not allowed
